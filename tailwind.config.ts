@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -89,8 +90,36 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						'--tw-prose-headings': 'rgb(226 232 240)', // slate-200
+						'--tw-prose-body': 'rgb(203 213 225)', // slate-300
+						'--tw-prose-bold': 'rgb(226 232 240)', // slate-200
+						'--tw-prose-bullets': 'rgb(203 213 225)', // slate-300
+						code: {
+							color: 'rgb(110 231 183)', // emerald-300
+							backgroundColor: 'rgba(16 185 129 / 0.1)', // emerald-500/10
+							borderRadius: '0.375rem',
+							paddingLeft: '0.25rem',
+							paddingRight: '0.25rem',
+							paddingTop: '0.125rem',
+							paddingBottom: '0.125rem',
+							'&::before': {
+								content: '""'
+							},
+							'&::after': {
+								content: '""'
+							}
+						}
+					}
+				}
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("@tailwindcss/typography")
+	],
 } satisfies Config;

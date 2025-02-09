@@ -36,16 +36,6 @@
   }
 
   .prose {
-    @apply prose-headings:text-slate-200 
-           prose-p:text-slate-300 
-           prose-strong:text-slate-200 
-           prose-ul:text-slate-300 
-           prose-code:text-emerald-300
-           prose-code:bg-emerald-500/10
-           prose-code:px-1
-           prose-code:py-0.5
-           prose-code:rounded-md
-           prose-code:before:content-['']
-           prose-code:after:content-[''];
+    @apply max-w-none;
   }
 }
