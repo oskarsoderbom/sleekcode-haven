@@ -38,4 +38,8 @@
   .prose {
     @apply max-w-none;
   }
+
+  .glass-morphism {
+    @apply backdrop-blur-xl bg-[#1A1F2C]/90 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)];
+  }
 }
