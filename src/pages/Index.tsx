@@ -3,6 +3,7 @@ import { SunIcon, MoonIcon, Trophy, BookOpen, GamepadIcon, RocketIcon, PuzzleIco
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import CodeEditor from "@/components/CodeEditor";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(true);
@@ -69,6 +70,16 @@ const Index = () => {
               <Button size="lg" variant="outline" className="rounded-full">
                 View Leaderboard
               </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Code Editor Section */}
+        <div className={`glass-morphism rounded-xl p-8 mb-12 ${isDark ? 'dark' : 'light'}`}>
+          <div className={`backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'} rounded-xl p-6`}>
+            <h2 className="text-2xl font-semibold mb-6 text-center">Try Our Code Editor</h2>
+            <div className="h-[400px] rounded-lg overflow-hidden">
+              <CodeEditor />
             </div>
           </div>
         </div>
