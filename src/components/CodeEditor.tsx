@@ -2,9 +2,10 @@
 import Editor from "@monaco-editor/react";
 import { useState } from "react";
 
-const defaultCode = `function twoSum(nums, target) {
+const defaultCode = `function solution(nums, target) {
   // Write your solution here
   
+  return [];
 }`;
 
 export default function CodeEditor() {
@@ -26,12 +27,7 @@ export default function CodeEditor() {
           scrollBeyondLastLine: false,
           automaticLayout: true,
           padding: { top: 16, bottom: 16 },
-          fontFamily: "JetBrains Mono, monospace",
-          lineHeight: 24,
-          scrollbar: {
-            vertical: 'hidden',
-            horizontal: 'hidden'
-          }
+          fontFamily: "JetBrains Mono, monospace"
         }}
       />
     </div>

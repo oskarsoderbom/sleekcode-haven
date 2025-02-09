@@ -33,8 +33,8 @@ export default function ProblemDescription() {
   const [showHint, setShowHint] = useState(false);
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-8 space-y-6">
+    <div className="h-full">
+      <div className="p-6 space-y-6">
         <div className="prose prose-invert max-w-none">
           <MarkdownPreview 
             source={markdown}
