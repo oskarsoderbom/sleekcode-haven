@@ -7,7 +7,7 @@ import {
 import { SunIcon, MoonIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CodeEditor from "@/components/CodeEditor";
-import ProblemDescription from "@/components/ProblemDescription";
+import ProblemList from "@/components/ProblemList";
 import { useState, useEffect } from "react";
 
 const Index = () => {
@@ -41,7 +41,7 @@ const Index = () => {
           >
             <Panel defaultSize={40} minSize={30}>
               <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-black/5'}`}>
-                <ProblemDescription />
+                <ProblemList />
               </div>
             </Panel>
             
