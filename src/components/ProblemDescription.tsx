@@ -33,31 +33,42 @@ export default function ProblemDescription() {
   const [showHint, setShowHint] = useState(false);
 
   return (
-    <div className="problem-container">
-      <MarkdownPreview source={markdown} />
-      
-      <div className="hint-container">
-        <Button
-          variant="ghost"
-          className="w-full flex items-center justify-between"
-          onClick={() => setShowHint(!showHint)}
-        >
-          <div className="flex items-center gap-2">
-            <Lightbulb className="w-4 h-4" />
-            <span>Hint</span>
-          </div>
-          {showHint ? (
-            <ChevronUp className="w-4 h-4" />
-          ) : (
-            <ChevronDown className="w-4 h-4" />
-          )}
-        </Button>
+    <div className="h-full">
+      <div className="p-6 space-y-6">
+        <div className="prose prose-invert max-w-none">
+          <MarkdownPreview 
+            source={markdown}
+            className="!bg-transparent"
+            style={{
+              backgroundColor: 'transparent',
+              color: '#E2E8F0'
+            }}
+          />
+        </div>
         
-        {showHint && (
-          <div className="mt-4 text-sm text-muted-foreground">
-            {hint}
-          </div>
-        )}
+        <div className="rounded-lg bg-white/[0.03] border border-white/10">
+          <Button
+            variant="ghost"
+            className="w-full flex items-center justify-between p-4 text-slate-200 hover:text-emerald-400 hover:bg-emerald-500/10"
+            onClick={() => setShowHint(!showHint)}
+          >
+            <div className="flex items-center gap-2">
+              <Lightbulb className="w-4 h-4" />
+              <span>Hint</span>
+            </div>
+            {showHint ? (
+              <ChevronUp className="w-4 h-4" />
+            ) : (
+              <ChevronDown className="w-4 h-4" />
+            )}
+          </Button>
+          
+          {showHint && (
+            <div className="p-4 text-sm text-slate-300 border-t border-white/10">
+              {hint}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -2,21 +2,21 @@
 import Editor from "@monaco-editor/react";
 import { useState } from "react";
 
-const defaultCode = `function solution(input) {
-  // Write your code here
+const defaultCode = `function solution(nums, target) {
+  // Write your solution here
   
-  return;
+  return [];
 }`;
 
 export default function CodeEditor() {
   const [code, setCode] = useState(defaultCode);
 
   return (
-    <div className="editor-container">
+    <div className="h-full">
       <Editor
         height="100%"
         defaultLanguage="javascript"
-        theme="vs-light"
+        theme="vs-dark"
         value={code}
         onChange={(value) => setCode(value || "")}
         options={{
@@ -26,6 +26,8 @@ export default function CodeEditor() {
           roundedSelection: true,
           scrollBeyondLastLine: false,
           automaticLayout: true,
+          padding: { top: 16, bottom: 16 },
+          fontFamily: "JetBrains Mono, monospace"
         }}
       />
     </div>
