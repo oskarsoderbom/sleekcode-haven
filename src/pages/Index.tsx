@@ -36,19 +36,19 @@ const Index = () => {
       <div className="w-[95%] max-w-[1600px] mx-auto transform transition-all duration-300 hover:scale-[1.01]">
         <div className={`glass-morphism rounded-xl shadow-2xl ${isDark ? 'dark' : 'light'}`}>
           <PanelGroup 
-            direction="horizontal" 
+            direction="vertical" 
             className="min-h-[80vh] rounded-xl overflow-hidden"
           >
-            <Panel defaultSize={40} minSize={30}>
-              <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-black/5'}`}>
+            <Panel defaultSize={60} minSize={40}>
+              <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'}`}>
                 <ProblemList />
               </div>
             </Panel>
             
-            <PanelResizeHandle className="w-1.5 bg-white/[0.02] hover:bg-emerald-500/20 transition-colors" />
+            <PanelResizeHandle className="h-1.5 bg-white/[0.02] hover:bg-emerald-500/20 transition-colors" />
             
-            <Panel minSize={40}>
-              <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-black/5'}`}>
+            <Panel minSize={30}>
+              <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'}`}>
                 <CodeEditor />
               </div>
             </Panel>
