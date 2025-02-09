@@ -6,7 +6,6 @@ import {
 } from "react-resizable-panels";
 import { SunIcon, MoonIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import CodeEditor from "@/components/CodeEditor";
 import ProblemList from "@/components/ProblemList";
 import { useState, useEffect } from "react";
 
@@ -35,24 +34,11 @@ const Index = () => {
 
       <div className="w-[95%] max-w-[1600px] mx-auto transform transition-all duration-300 hover:scale-[1.01]">
         <div className={`glass-morphism rounded-xl shadow-2xl ${isDark ? 'dark' : 'light'}`}>
-          <PanelGroup 
-            direction="vertical" 
-            className="min-h-[80vh] rounded-xl overflow-hidden"
-          >
-            <Panel defaultSize={60} minSize={40}>
-              <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'}`}>
-                <ProblemList />
-              </div>
-            </Panel>
-            
-            <PanelResizeHandle className="h-1.5 bg-white/[0.02] hover:bg-emerald-500/20 transition-colors" />
-            
-            <Panel minSize={30}>
-              <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'}`}>
-                <CodeEditor />
-              </div>
-            </Panel>
-          </PanelGroup>
+          <div className={`min-h-[80vh] rounded-xl overflow-hidden`}>
+            <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'}`}>
+              <ProblemList />
+            </div>
+          </div>
         </div>
       </div>
     </div>
