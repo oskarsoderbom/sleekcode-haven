@@ -1,12 +1,7 @@
 
-import {
-  Panel,
-  PanelGroup,
-  PanelResizeHandle,
-} from "react-resizable-panels";
 import { SunIcon, MoonIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ProblemList from "@/components/ProblemList";
+import Leaderboard from "@/components/Leaderboard";
 import { useState, useEffect } from "react";
 
 const Index = () => {
@@ -36,7 +31,7 @@ const Index = () => {
         <div className={`glass-morphism rounded-xl shadow-2xl ${isDark ? 'dark' : 'light'}`}>
           <div className={`min-h-[80vh] rounded-xl overflow-hidden`}>
             <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'}`}>
-              <ProblemList />
+              <Leaderboard />
             </div>
           </div>
         </div>
