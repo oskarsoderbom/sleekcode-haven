@@ -1,12 +1,26 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import {
+  Panel,
+  PanelGroup,
+  PanelResizeHandle,
+} from "react-resizable-panels";
+import CodeEditor from "@/components/CodeEditor";
+import ProblemDescription from "@/components/ProblemDescription";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen p-4 bg-gradient-to-br from-emerald-50 to-slate-50">
+      <PanelGroup direction="horizontal" className="min-h-[calc(100vh-2rem)] rounded-xl glass-panel">
+        <Panel defaultSize={40} minSize={30}>
+          <ProblemDescription />
+        </Panel>
+        
+        <PanelResizeHandle className="panel-handle" />
+        
+        <Panel minSize={40}>
+          <CodeEditor />
+        </Panel>
+      </PanelGroup>
     </div>
   );
 };
