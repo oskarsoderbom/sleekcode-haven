@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { Check, DiamondIcon, CircleIcon, Square } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Check, DiamondIcon, CircleIcon, Square, SunIcon, MoonIcon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 type Difficulty = 'Easy' | 'Medium' | 'Hard' | 'Expert';
 type Category = 'A' | 'B' | 'C';
@@ -54,6 +55,18 @@ const ProblemList = () => {
     { id: 8, title: 'Roman to Integer', category: 'C', difficulty: 'Hard', selected: false },
   ]);
 
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.body.style.backgroundColor = '#1A1F2C';
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.style.backgroundColor = '#ffffff';
+    }
+  }, [isDark]);
+
   const toggleProblem = (id: number) => {
     setProblems(problems.map(problem =>
       problem.id === id ? { ...problem, selected: !problem.selected } : problem
@@ -61,44 +74,62 @@ const ProblemList = () => {
   };
 
   return (
-    <div className="p-6 w-full h-full overflow-auto">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-12"></TableHead>
-            <TableHead>Problem</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Difficulty</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {problems.map((problem) => (
-            <TableRow
-              key={problem.id}
-              className="cursor-pointer hover:bg-white/5"
-              onClick={() => toggleProblem(problem.id)}
-            >
-              <TableCell>
-                <div className="h-4 w-4 rounded border border-primary flex items-center justify-center">
-                  {problem.selected && <Check className="h-3 w-3 text-primary" />}
-                </div>
-              </TableCell>
-              <TableCell>{problem.title}</TableCell>
-              <TableCell>
-                <div className="flex items-center gap-2">
-                  {getCategoryIcon(problem.category)}
-                  {problem.category}
-                </div>
-              </TableCell>
-              <TableCell>
-                <span className={getDifficultyColor(problem.difficulty)}>
-                  {problem.difficulty}
-                </span>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+    <div className={`min-h-screen transition-colors duration-200 ${isDark ? 'dark bg-[#1A1F2C] text-white' : 'bg-white text-black'}`}>
+      <div className="p-6 w-full h-full overflow-auto">
+        <div className="flex justify-end mb-4">
+          <Button
+            variant="outline"
+            size="icon"
+            className="rounded-full"
+            onClick={() => setIsDark(!isDark)}
+          >
+            {isDark ? (
+              <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
+            ) : (
+              <MoonIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all" />
+            )}
+          </Button>
+        </div>
+        <div className={`${isDark ? 'glass-morphism dark' : 'glass-morphism light'} rounded-lg p-4`}>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-12"></TableHead>
+                <TableHead>Problem</TableHead>
+                <TableHead>Category</TableHead>
+                <TableHead>Difficulty</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {problems.map((problem) => (
+                <TableRow
+                  key={problem.id}
+                  className={`cursor-pointer ${isDark ? 'hover:bg-white/5' : 'hover:bg-black/5'}`}
+                  onClick={() => toggleProblem(problem.id)}
+                >
+                  <TableCell>
+                    <div className="h-4 w-4 rounded border border-primary flex items-center justify-center">
+                      {problem.selected && <Check className="h-3 w-3 text-primary" />}
+                    </div>
+                  </TableCell>
+                  <TableCell>{problem.title}</TableCell>
+                  <TableCell>
+                    <div className="flex items-center gap-2">
+                      {getCategoryIcon(problem.category)}
+                      {problem.category}
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <span className={getDifficultyColor(problem.difficulty)}>
+                      {problem.difficulty}
+                    </span>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 };
