@@ -1,7 +1,7 @@
 
 import { SunIcon, MoonIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Leaderboard from "@/components/Leaderboard";
+import UserProfile from "@/components/UserProfile";
 import { useState, useEffect } from "react";
 
 const Index = () => {
@@ -31,7 +31,7 @@ const Index = () => {
         <div className={`glass-morphism rounded-xl shadow-2xl ${isDark ? 'dark' : 'light'}`}>
           <div className={`min-h-[80vh] rounded-xl overflow-hidden`}>
             <div className={`h-full backdrop-blur-xl ${isDark ? 'bg-black/20' : 'bg-white/60'}`}>
-              <Leaderboard />
+              <UserProfile />
             </div>
           </div>
         </div>
