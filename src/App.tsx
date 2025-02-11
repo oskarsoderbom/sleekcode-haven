@@ -10,6 +10,9 @@ import ProblemList from "./components/ProblemList";
 import ProblemDescription from "./components/ProblemDescription";
 import Leaderboard from "./components/Leaderboard";
 import UserProfile from "./components/UserProfile";
+import AboutUs from "./pages/AboutUs";
+import CookiePolicy from "./pages/CookiePolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +28,9 @@ const App = () => (
           <Route path="/problems/:id" element={<ProblemDescription />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
