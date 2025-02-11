@@ -1,5 +1,5 @@
 
-import { Scroll, CompassIcon, Trophy, FileCog, Database, HelpCircle, Users, MessageCircle, MessageSquareQuestion } from 'lucide-react';
+import { Scroll, CompassIcon, Trophy, FileCog, Database, HelpCircle, Users, MessageCircle, HelpCircleIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -171,7 +171,7 @@ const Documentation = () => {
                         <p className="text-sm text-muted-foreground">Connect with other users</p>
                       </Link>
                       <Link to="/faq" className="block p-6 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group">
-                        <MessageSquareQuestion className="h-8 w-8 text-primary mb-3" />
+                        <HelpCircleIcon className="h-8 w-8 text-primary mb-3" />
                         <h3 className="font-medium mb-2 group-hover:text-primary transition-colors">FAQ</h3>
                         <p className="text-sm text-muted-foreground">Common questions answered</p>
                       </Link>
