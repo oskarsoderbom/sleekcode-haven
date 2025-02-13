@@ -1,10 +1,13 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { useSessionContext } from 'supertokens-auth-react/recipe/session';
+import { useSessionContext, SessionContextType } from 'supertokens-auth-react/recipe/session';
 
 const AuthButtons = () => {
-  const session = useSessionContext();
+  // Add proper typing to the session context
+  const session = useSessionContext() as SessionContextType & {
+    doesSessionExist: boolean;
+  };
 
   const handleLogin = () => {
     // Add login logic here
