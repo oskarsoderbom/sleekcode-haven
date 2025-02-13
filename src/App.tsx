@@ -15,6 +15,7 @@ import CookiePolicy from "./pages/CookiePolicy";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Documentation from "./pages/Documentation";
 import PricingPage from "./pages/Pricing";
+import Header from "./components/Header";
 
 const queryClient = new QueryClient();
 
@@ -24,19 +25,22 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/problems" element={<ProblemList />} />
-          <Route path="/problems/:id" element={<ProblemDescription />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/documentation" element={<Documentation />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Header />
+        <main className="pt-20"> {/* Add padding to account for fixed header */}
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/problems" element={<ProblemList />} />
+            <Route path="/problems/:id" element={<ProblemDescription />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/documentation" element={<Documentation />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
