@@ -16,23 +16,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Documentation from "./pages/Documentation";
 import PricingPage from "./pages/Pricing";
 import Header from "./components/Header";
-import SuperTokens from "supertokens-auth-react";
-import EmailPassword from "supertokens-auth-react/recipe/emailpassword";
-import Session from "supertokens-auth-react/recipe/session";
-import { SessionAuth } from "supertokens-auth-react/recipe/session";
-
-// Initialize SuperTokens
-SuperTokens.init({
-  appInfo: {
-    appName: "SpreadsheetChallenges",
-    apiDomain: "http://localhost:3000", // Replace with your API domain
-    websiteDomain: "http://localhost:5173", // Replace with your website domain
-  },
-  recipeList: [
-    EmailPassword.init(),
-    Session.init(),
-  ],
-});
 
 const queryClient = new QueryClient();
 
@@ -42,24 +25,22 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <SessionAuth>
-          <Header />
-          <main className="pt-20"> {/* Add padding to account for fixed header */}
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/problems" element={<ProblemList />} />
-              <Route path="/problems/:id" element={<ProblemDescription />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/profile" element={<UserProfile />} />
-              <Route path="/about" element={<AboutUs />} />
-              <Route path="/cookie-policy" element={<CookiePolicy />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/documentation" element={<Documentation />} />
-              <Route path="/pricing" element={<PricingPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-        </SessionAuth>
+        <Header />
+        <main className="pt-20"> {/* Add padding to account for fixed header */}
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/problems" element={<ProblemList />} />
+            <Route path="/problems/:id" element={<ProblemDescription />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/documentation" element={<Documentation />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

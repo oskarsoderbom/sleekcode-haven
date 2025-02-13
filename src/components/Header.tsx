@@ -3,8 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
-import { useSessionContext, SessionContextType } from 'supertokens-auth-react/recipe/session';
-import AuthButtons from "./AuthButtons";
 import { ThemeToggle } from "./ui/theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -14,10 +12,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const session = useSessionContext() as SessionContextType & {
-    doesSessionExist: boolean;
-    userId: string;
-  };
 
   const menuItems = [
     { text: 'Problems', path: '/problems' },
@@ -53,16 +47,13 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
               </Link>
             ))}
-            {session.doesSessionExist && (
-              <Link 
-                to={`/profile/${session.userId}`} 
-                className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-              >
-                Profile
-              </Link>
-            )}
             <div className="flex items-center gap-4 pl-4 border-l border-border">
-              <AuthButtons />
+              <Button variant="ghost" className="text-sm font-medium">
+                Sign In
+              </Button>
+              <Button className="text-sm font-medium">
+                Sign Up
+              </Button>
               <ThemeToggle />
             </div>
           </nav>
@@ -110,17 +101,15 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                   {item.text}
                 </Link>
               ))}
-              {session.doesSessionExist && (
-                <Link
-                  to={`/profile/${session.userId}`}
-                  className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Profile
-                </Link>
-              )}
               <div className="pt-6 border-t border-border">
-                <AuthButtons />
+                <div className="flex flex-col gap-4">
+                  <Button variant="ghost" className="text-sm font-medium w-full">
+                    Sign In
+                  </Button>
+                  <Button className="text-sm font-medium w-full">
+                    Sign Up
+                  </Button>
+                </div>
               </div>
             </nav>
           </div>
